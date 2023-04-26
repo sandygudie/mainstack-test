@@ -278,6 +278,7 @@ export default function Home() {
               outerRadius={85}
               fill="#8884d8"
               dataKey="percent"
+              blendStroke="false"
             >
               {topLocation.map((entry, index) => (
                 <Cell
@@ -316,6 +317,7 @@ export default function Home() {
               outerRadius={85}
               fill="#8884d8"
               dataKey="percent"
+              blendStroke="false"
             >
               {topSource.map((entry, index) => (
                 <Cell
