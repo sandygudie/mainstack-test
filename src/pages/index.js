@@ -1,118 +1,334 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
+} from "recharts";
+import { duration } from "@/data";
+import { useEffect, useState } from "react";
+import convertDate from "@/utils";
+import "/node_modules/flag-icons/css/flag-icons.min.css";
+import FacebookIcon from "../../public/images/facebook.svg";
+import InstagramIcon from "../../public/images/instagram.svg";
+import GoogleIcon from "../../public/images/google.svg";
+import LinkledIcon from "../../public/images/linkledIn.svg";
 
 export default function Home() {
+  const [graphData, setGraphData] = useState([]);
+  const [topLocation, setTopLocation] = useState([]);
+  const [topSource, setTopSource] = useState([]);
+
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    try {
+      const res = await fetch(`https://fe-task-api.mainstack.io/`, {
+        method: "GET",
+      });
+      const data = await res.json();
+      const splitData = splitKeyValue(data.graph_data.views);
+      setGraphData(splitData);
+      setTopLocation(data.top_locations);
+      setTopSource(data.top_sources);
+    } catch (err) {
+      console.log(err); // use toast to handle error
+    }
+  };
+  const COLORS = [
+    "hsla(211, 77%, 63%, 1)",
+    "hsla(259, 90%, 64%, 1)",
+    "hsla(19, 82%, 68%, 1)",
+    "hsla(43, 96%, 51%, 1)",
+    "hsla(158, 85%, 39%, 1)",
+  ];
+  // const flag =[{
+  //   name:"Nigeria",
+  //   icon: <span class="fi fi-ng"></span>
+  // }]
+
+  const CustomTooltip = ({ payload, active }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="shadow-xl bg-white rounded-xl w-28 fixed text-center z-10 p-3 text-sm">
+          <div className="pb-2 flex items-center justify-between">
+            {" "}
+            <p>Date:</p>
+            <p> {payload[0].payload.date}</p>
+          </div>
+          <div className="flex items-center justify-between">
+            {" "}
+            <p>Views:</p>
+            <p> {payload[0].payload.views}</p>
+          </div>
+        </div>
+      );
+    }
+  };
+  const CustomizedLegend = (props) => {
+    const { payload, name } = props;
+
+    return (
+      <ul>
+        {name === "topLocation"
+          ? payload.map((entry, index) => (
+              <li
+                key={`item-${index}`}
+                className="flex items-center gap-3 my-5 text-sm"
+              >
+                <p>
+                  {" "}
+                  {entry.payload.country === "Nigeria" ? (
+                    <span class="fi fi-ng rounded mr-1"></span>
+                  ) : entry.payload.country === "Germany" ? (
+                    <span class="fi fi-gr rounded mr-1"></span>
+                  ) : entry.payload.country === "Ghana" ? (
+                    <span class="fi fi-gh rounded mr-1"></span>
+                  ) : entry.payload.country === "Finland" ? (
+                    <span class="fi fi-fi rounded mr-1"></span>
+                  ) : entry.payload.country === "United Kingdom" ? (
+                    <span class="fi fi-gb rounded mr-1"></span>
+                  ) : (
+                    ""
+                  )}
+                  <span className="text-black"> {entry.payload.country}</span>
+                  <span className="font-semibold pl-2">
+                    {entry.payload.percent}%
+                  </span>{" "}
+                </p>
+
+                <span
+                  style={{ backgroundColor: entry.color }}
+                  className="dot"
+                ></span>
+              </li>
+            ))
+          : payload.map((entry, index) => (
+              <li
+                key={`item-${index}`}
+                className="flex items-center gap-3 my-5 text-sm"
+              >
+                <p>
+                  {" "}
+                  {entry.payload.source === "google" ? (
+                    <GoogleIcon className="rounded mr-1 inline" />
+                  ) : entry.payload.source === "instagram" ? (
+                    <InstagramIcon className="rounded mr-1 w-5 inline" />
+                  ) : entry.payload.source === "facebook" ? (
+                    <FacebookIcon className="rounded mr-1  inline" />
+                  ) : entry.payload.source === "linkedin" ? (
+                    <LinkledIcon className="rounded mr-1 inline" />
+                  ) : (
+                    ""
+                  )}
+                  <span className="text-black"> {entry.payload.source}</span>
+                  <span className="font-semibold pl-2">
+                    {entry.payload.percent}%
+                  </span>{" "}
+                </p>
+
+                <span
+                  style={{ backgroundColor: entry.color }}
+                  className="dot"
+                ></span>
+              </li>
+            ))}
+      </ul>
+    );
+  };
+  const splitKeyValue = (obj) => {
+    const keys = Object.keys(obj);
+    const res = [];
+    for (let i = 0; i < keys.length; i++) {
+      res.push({
+        date: convertDate(keys[i]),
+        views: obj[keys[i]],
+      });
+    }
+    return res;
+  };
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <section className="pt-4 px-16 pl-[20em] pb-8">
+      <h1 className="text-black text-lg font-semibold"> Dashboard</h1>
+      <div className="mt-8 mb-6 flex items-center justify-between">
+        <div>
+          <h2 className="font-bold text-black text-2xl">
+            Good morning, Blessing ⛅️
+          </h2>
+          <p className="text-gray-500 text-sm pt-2">
+            Check out your dashboard summary.
+          </p>
+        </div>
+        <p className="text-primary text-sm cursor-pointer">View analytics</p>
+      </div>
+
+      <section>
+        <div className="flex items-center gap-4">
+          {duration.map(({ id, title }) => (
+            <p
+              key={id}
+              className={`${
+                id === 4
+                  ? "bg-primary-light border-primary text-primary"
+                  : " border-gray text-gray-500"
+              } text-sm border-[1px] cursor-pointer rounded-full py-2 px-4  hover:border-primary hover:text-primary`}
+            >
+              {title}
+            </p>
+          ))}
+        </div>
+        <div className="w-full my-6 p-5 border-[1px] rounded-xl border-gray">
+          <div className="">
+            <p className="text-black text-lg">Page Views</p>
+            <span className="text-gray-400 text-sm">All time</span>
+          </div>
+          <p className="font-bold text-black text-4xl my-6">500</p>
+          <div className="">
+            <ResponsiveContainer width={"100%"} height={300} min-width={300}>
+              <AreaChart
+              // width={1000}
+                // height={280}
+                data={graphData}
+                margin={{
+                  top: 10,
+                  right: 0,
+                  left: 0,
+                  bottom: 20,
+                }}
+              >
+                <defs>
+                  <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#FF5403" stopOpacity={0.2} />
+                    <stop offset="100%" stopColor="#FF5403" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+
+                <CartesianGrid vertical={false} strokeDasharray="3 3" />
+                <XAxis
+                  padding={{ right: 50, left: 50 }}
+                  tickLine={false}
+                  tickMargin="25"
+                  axisLine={false}
+                  dataKey="date"
+                  style={{
+                    fontSize: "13px",
+                    color: "#56616B",
+                  }}
+                />
+                <YAxis
+                  tickLine={false}
+                  tickMargin="20"
+                  axisLine={false}
+                  style={{
+                    fontSize: "14px",
+                    color: "#56616B",
+                  }}
+                />
+                <Tooltip
+                  content={<CustomTooltip />}
+                  wrapperStyle={{ border: "1px solid red" }}
+                  cursor={{ stroke: "red", strokeWidth: 2 }}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="views"
+                  stroke="#FF5403"
+                  fillOpacity={1}
+                  fill="url(#colorUv)"
+                  baseLine={[{ x: 12, y: 15 }]}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </section>
+      <div className="my-6 flex items-center gap-1 flex-wrap justify-between">
+        <div className=" w-[48%] p-6 border-[1px] rounded-xl border-gray">
+          <div className="mb-4 flex items-center justify-between">
+            <p className="text-black font-semibold text-lg">Top Locations</p>
+            <p className="text-sm text-primary">View full reports</p>
+          </div>
+
+          <PieChart
+            width={400}
+            height={200}
+            style={{ display: "flex", alignItems: "center",justifyContent:"space-around",margin:"auto" }}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+            <Legend
+              content={<CustomizedLegend name="topLocation" />}
+              align="left"
+              layout="vertical"
+              verticalAlign="middle"
             />
-          </a>
+            {/* cy and cx, half of main width and height */}
+            <Pie
+              legendType="line"
+              data={topLocation}
+              cx={100}
+              cy={100}
+              innerRadius={50}
+              outerRadius={85}
+              fill="#8884d8"
+              dataKey="percent"
+            >
+              {topLocation.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        </div>
+        <div className="  w-[48%] p-6 border-[1px] rounded-xl border-gray">
+          <div className="mb-4 flex items-center justify-between">
+            <p className="text-black font-semibold text-lg">
+              Top Referral source
+            </p>
+            <p className="text-sm text-primary">View full reports</p>
+          </div>
+
+          <PieChart
+            width={400}
+            height={200}
+            style={{ display: "flex", alignItems: "center",margin:"auto" }}
+          >
+            <Legend
+              content={<CustomizedLegend name="topSource" />}
+              align="left"
+              layout="vertical"
+              verticalAlign="middle"
+            />
+            <Pie
+              legendType="line"
+              data={topSource}
+              cx={120}
+              cy={100}
+              innerRadius={50}
+              outerRadius={85}
+              fill="#8884d8"
+              dataKey="percent"
+            >
+              {topSource.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </section>
+  );
 }
+
+// tick={{ dx: 20 }}

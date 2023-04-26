@@ -2,26 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: "Sohne";
+  font-weight: 200;
+  src: url("./fonts/Söhne-ExtraLight.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sohne";
+  font-weight: 300;
+  src: url("./fonts/Söhne-Light.otf") format("opentype");
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: "Sohne";
+  font-weight: 400;
+  src: url("./fonts/Söhne-Regular.otf") format("opentype");
+  font-display: swap;
 }
 
+@font-face {
+  font-family: "Sohne";
+  font-weight: 500;
+  src: url("./fonts/Söhne-Medium.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sohne";
+  font-weight: 600;
+  src: url("./fonts/Söhne-SemiBold.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sohne";
+  font-weight: 700;
+  src: url("./fonts/Söhne-Bold.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sohne";
+  font-weight: 800;
+  src: url("./fonts/Söhne-ExtraBold.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sohne";
+  font-weight: 900;
+  src: url("./fonts/Söhne-Black.otf") format("opentype");
+  font-display: swap;
+}
+
+*,
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-family: "Sohne", sans-serif;
+  background-color: #ffffff;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+input,
+button,
+select {
+  outline: none;
+}
+
+.dot {
+  height: 11px;
+  width: 11px;
+  border-radius: 50%;
+  display: inline-block;
 }
