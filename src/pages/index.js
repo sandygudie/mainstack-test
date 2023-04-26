@@ -19,6 +19,7 @@ import FacebookIcon from "../../public/images/facebook.svg";
 import InstagramIcon from "../../public/images/instagram.svg";
 import GoogleIcon from "../../public/images/google.svg";
 import LinkledIcon from "../../public/images/linkledIn.svg";
+import TipIcon from "../../public/images/info.svg";
 
 export default function Home() {
   const [graphData, setGraphData] = useState([]);
@@ -187,14 +188,18 @@ export default function Home() {
         </div>
         <div className="w-full my-6 p-5 border-[1px] rounded-xl border-gray">
           <div className="">
-            <p className="text-black text-lg">Page Views</p>
+            <div className="flex items-center justify-between">
+              {" "}
+              <p className="text-black text-lg font-semibold">Page Views</p>
+              <TipIcon className="cursor-pointer hover:text-primary" />
+            </div>
             <span className="text-gray-400 text-sm">All time</span>
           </div>
           <p className="font-bold text-black text-4xl my-6">500</p>
           <div className="">
             <ResponsiveContainer width={"100%"} height={300} min-width={300}>
               <AreaChart
-              // width={1000}
+                // width={1000}
                 // height={280}
                 data={graphData}
                 margin={{
@@ -254,13 +259,18 @@ export default function Home() {
         <div className=" w-[48%] p-6 border-[1px] rounded-xl border-gray">
           <div className="mb-4 flex items-center justify-between">
             <p className="text-black font-semibold text-lg">Top Locations</p>
-            <p className="text-sm text-primary">View full reports</p>
+            <p className="text-sm text-primary cursor-pointer">View full reports</p>
           </div>
 
           <PieChart
             width={400}
             height={200}
-            style={{ display: "flex", alignItems: "center",justifyContent:"space-around",margin:"auto" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-around",
+              margin: "auto",
+            }}
           >
             <Legend
               content={<CustomizedLegend name="topLocation" />}
@@ -294,13 +304,13 @@ export default function Home() {
             <p className="text-black font-semibold text-lg">
               Top Referral source
             </p>
-            <p className="text-sm text-primary">View full reports</p>
+            <p className="text-sm text-primary cursor-pointer">View full reports</p>
           </div>
 
           <PieChart
             width={400}
             height={200}
-            style={{ display: "flex", alignItems: "center",margin:"auto" }}
+            style={{ display: "flex", alignItems: "center", margin: "auto" }}
           >
             <Legend
               content={<CustomizedLegend name="topSource" />}

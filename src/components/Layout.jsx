@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 // import { motion } from "framer-motion";
 
 export default function Layout({ children }) {
-  console.log(children);
+
 
   return (
     // <ChakraProvider>
@@ -16,7 +16,7 @@ export default function Layout({ children }) {
         setCollapisible={children.props.setCollapisible}
       />
       {/* </motion.div> */}
-      <main className={`${children.props.isCollapisible? "pl-[9em]" : "pl-[20em]"} basis-4/5 px-16  `}>{children}</main>
+      <main className={`${children.props.isCollapisible? "animate-box-main" : "animate-box-main-collapse"} basis-4/5 px-16  `}>{children}</main>
     </div>
     // </ChakraProvider>
   );

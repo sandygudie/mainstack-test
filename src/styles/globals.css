@@ -92,82 +92,23 @@ select {
   display: inline-block;
 }
 
-
-.square {
-  position: relative;
-
+.animate-box {
+  width: 100px;
+  transition: width 0.5s;
 }
 
-.animate-left,
-.animate-center,
-.right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
+.animate-box-collapse {
+  width: 250px;
+  transition: width 0.5s;
 }
-.animate-left{
-    background: red;
+.animate-box-main {
+  /* width: 300px; */
+  padding-left: 9em;
+  transition: padding 0.5s;
 }
-.animate-center {
-    background: yellow;
-}
-.right {
-    background: blue;
+.animate-box-main-collapse {
+  /* width: 300px; */
+  padding-left: 20em;
+  transition: padding 0.5s;
 }
 
-
-.animate-left,
-.right {
-    width: 20px;
-}
-
-
-.animate-center {
-  /* center needs to be 20 pixels from the left, 
-  so it doesn't overlap with the .left element */
-  left: 20px;
-
-  /* needs a width of 1 pixel, this causes 
-  scaleX(60) is equal to 60 pixels */
-  width: 1px;
-  /* transform: scaleX(2); */
-
-  /* we need to scale the texture from the left side 
-  for it to align correctly, default is center */
-  transform-origin: left;
-}
-
-.center {
-  animation: center-animate 1s ease infinite alternate;
-}
-
-.right {
-  animation: right-animate 1s ease infinite alternate;
-}
-
-@keyframes right-animate {
-  0% {
-      transform: translateX(140px);
-  }
-  100% {
-      transform: translateX(20px);
-  }
-}
-
-@keyframes center-animate {
-  0% {
-      transform: scaleX(120);
-  }
-  100% {
-      transform: scaleX(0);
-  }
-}
-
-/* @keyframes center-animate {
-  0% {
-      transform: scaleX(121);
-  }
-  100% {
-      transform: scaleX(1);
-  }
-} */
