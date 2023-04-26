@@ -1,36 +1,32 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Fragment } from "react";
 import Sidebar from "./Sidebar";
-import { Transition } from "@headlessui/react";
+import { ChakraProvider } from "@chakra-ui/react";
+// import { Fade, ScaleFade, Slide, SlideFade, Collapse } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 export default function Layout({ children }) {
-  const [isCollapisible, setCollapisible] = useState(true);
+  const [isCollapisible, setCollapisible] = useState(false);
+  const { getButtonProps, getDisclosureProps, isOpen } = useDisclosure();
 
-
-
-  // const transitionStyles = {
-  //   entering: { opacity: 1 },
-  //   entered: { opacity: 1 },
-  //   exiting: { opacity: 0 },
-  //   exited: { opacity: 0 },
-  // };
   return (
+    // <ChakraProvider>
     <div className="mx-auto">
-      <Transition
-        show={isCollapisible}
-        // enter="transform"
-        // enterFrom="translate-y-6"
-        // enterTo="translate-y-6"
-        // leave="transform "
-        // leaveFrom="translate-y-6"
-        // leaveTo="translate-y-6"
-      >
-        <Sidebar
-          isCollapisible={isCollapisible}
-          setCollapisible={setCollapisible}
-        />
-      </Transition>
-
+      {/* <motion.div
+        {...getDisclosureProps()}
+        // hidden={isCollapisible}
+        initial={false}
+        // onAnimationStart={() => setCollapisible(false)}
+        // onAnimationComplete={() =>setCollapisible(true)}
+        animate={{ width: isCollapisible ? 500 : 10 }}
+        > */}
+      <Sidebar
+        isCollapisible={isCollapisible}
+        setCollapisible={setCollapisible}
+      />
+      {/* </motion.div> */}
       <main className="basis-4/5 ">{children}</main>
     </div>
+    // </ChakraProvider>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { navigationItem } from "@/data";
 import Image from "next/image";
 import DotIcon from "../../public/images/doticon.svg";
