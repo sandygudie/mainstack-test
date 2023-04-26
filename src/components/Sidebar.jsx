@@ -63,16 +63,16 @@ console.log(currentRoute)
                       <Link
                         href={link}
                         key={id}
-                        className={`my-1.5 border-2 font-medium text-[14px] pl-8 border-white ${
+                        className={`mb-2 border-2 font-medium text-[14px] pl-8 border-white ${
                           currentRoute === link &&
                           "text-primary border-l-primary border-l-2"
                         } hover:text-primary hover:border-l-primary hover:border-l-2`}
                       >
-                        <Icon className="inline mr-2" />
+                        <Icon className="inline w-5" />
                         <p
                           className={`${
                             isCollapisible ? "hidden" : "block"
-                          } inline `}
+                          } inline ml-2`}
                         >
                           {title}
                         </p>
