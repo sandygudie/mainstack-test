@@ -6,17 +6,15 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { BsBoxArrowLeft, BsBoxArrowRight } from "react-icons/bs";
 
-
-export default function Sidebar({isCollapisible, setCollapisible}) {
- 
+export default function Sidebar({ isCollapisible, setCollapisible }) {
   const router = useRouter();
   const currentRoute = router.pathname;
 
   return (
     <div
       className={`${
-        isCollapisible ? "w-[80px]" : "w-[250px]"
-      } w-[250px] fixed left-0 
+        isCollapisible ? "-translate-x-6" : "translate-x-50"
+      } transition ease-in duration-250 fixed left-0 
     z-30 pt-4 pb-8 flex flex-col justify-between h-screen pl-2 pr-4 border-gray border-r-[1px]`}
     >
       <div>
