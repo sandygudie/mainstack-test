@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { BsArrowLeftSquare, BsArrowRightSquare } from "react-icons/bs";
 
+import { Tooltip } from 'react-tooltip'
+
 export default function Sidebar({ isCollapisible, setCollapisible }) {
   const router = useRouter();
   const currentRoute = router.pathname;
@@ -17,7 +19,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
           ? "animate-box"
           : "animate-box-collapse w-[230px] md:w-[250px]"
       } transition ease-in-out duration-250 fixed left-0 
-    z-30 pt-4 pb-8 flex flex-col justify-between h-screen pl-1 outline-none pr-4 border-gray border-r-[1px]`}
+    z-30 pt-4 pb-12 flex flex-col justify-between h-screen pl-1 outline-none pr-4 border-gray border-r-[1px]`}
     >
       <div className="relative">
         {!isCollapisible ? (
@@ -66,6 +68,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
                       <Link
                         href={link}
                         key={id}
+                        data-tooltip-id="my-tooltip" data-tooltip-content={title}
                         className={`my-1.5 border-2 font-medium text-[14px] pl-8 border-white ${
                           currentRoute === link &&
                           "text-primary border-l-primary border-l-2"
@@ -79,6 +82,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
                         >
                           {title}
                         </p>
+                       {isCollapisible && <Tooltip id="my-tooltip" place="right" />}
                       </Link>
                     );
                   })}
@@ -89,7 +93,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
         </div>
       </div>
       <div className="pl-8 ">
-        <div className="flex   items-center justify-between">
+        <div className="flex items-center justify-between">
           <div className="">
             <Image
               width={30}
