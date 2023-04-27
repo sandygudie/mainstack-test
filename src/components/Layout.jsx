@@ -16,7 +16,7 @@ export default function Layout({ children }) {
         setCollapisible={children.props.setCollapisible}
       />
       {/* </motion.div> */}
-      <main className={`${children.props.isCollapisible? "animate-box-main" : "animate-box-main-collapse"} basis-4/5 px-16  `}>{children}</main>
+      <main className={`${children.props.isCollapisible? "animate-box-main" : "animate-box-main-collapse pl-[17em] lg:pl-[20em] "} basis-4/5 pr-10 lg:pr-14  `}>{children}</main>
     </div>
     // </ChakraProvider>
   );

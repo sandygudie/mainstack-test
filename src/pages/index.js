@@ -172,7 +172,7 @@ export default function Home() {
       </div>
 
       <section>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           {duration.map(({ id, title }) => (
             <p
               key={id}
@@ -255,17 +255,20 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="my-6 flex items-center gap-1 flex-wrap justify-between">
-        <div className=" w-[48%] p-6 border-[1px] rounded-xl border-gray">
+      <div className="my-6 md:flex-col lg:flex-row flex items-center gap-1 flex-wrap justify-between">
+        <div className="w-full lg:w-[48%] p-6 border-[1px] rounded-xl border-gray">
           <div className="mb-4 flex items-center justify-between">
             <p className="text-black font-semibold text-lg">Top Locations</p>
-            <p className="text-sm text-primary cursor-pointer">View full reports</p>
+            <p className="text-sm text-primary cursor-pointer">
+              View full reports
+            </p>
           </div>
 
           <PieChart
             width={400}
             height={200}
             style={{
+              width: "auto",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-around",
@@ -299,18 +302,26 @@ export default function Home() {
             </Pie>
           </PieChart>
         </div>
-        <div className="  w-[48%] p-6 border-[1px] rounded-xl border-gray">
+        <div className="w-full lg:w-[48%] p-6 border-[1px] rounded-xl border-gray">
           <div className="mb-4 flex items-center justify-between">
             <p className="text-black font-semibold text-lg">
               Top Referral source
             </p>
-            <p className="text-sm text-primary cursor-pointer">View full reports</p>
+            <p className="text-sm text-primary cursor-pointer">
+              View full reports
+            </p>
           </div>
 
           <PieChart
             width={400}
             height={200}
-            style={{ display: "flex", alignItems: "center", margin: "auto" }}
+            style={{
+              width: "auto",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-around",
+              margin: "auto",
+            }}
           >
             <Legend
               content={<CustomizedLegend name="topSource" />}

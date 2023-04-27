@@ -108,7 +108,7 @@ select {
 }
 .animate-box-main-collapse {
   /* width: 300px; */
-  padding-left: 20em;
+  /* padding-left: 18em; */
   transition: padding 0.5s;
 }
 
