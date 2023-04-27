@@ -22,7 +22,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
           ? "animate-box"
           : "animate-box-collapse w-[230px] md:w-[250px]"
       } transition ease-in-out duration-250 fixed left-0 
-    z-30 pt-4 pb-8 flex flex-col justify-between h-screen pl-2 pr-4 border-gray border-r-[1px]`}
+    z-30 pt-4 pb-8 flex flex-col justify-between h-screen pl-1 outline-none pr-4 border-gray border-r-[1px]`}
     >
       <div className="relative">
         {!isCollapisible ? (
@@ -54,7 +54,10 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
         <div className="fixed top-20">
           {navigationItem.map(({ id, subitem, description }) => {
             return (
-              <div className=" relative flex text-gray-400 flex-col mb-10" key={id}>
+              <div
+                className=" relative flex text-gray-400 flex-col mb-10"
+                key={id}
+              >
                 <p
                   className={`${
                     isCollapisible ? "hidden" : "animate-text"
@@ -102,7 +105,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
             />
             <span
               className={`${
-                isCollapisible ? "hidden" : " animate-text"
+                isCollapisible ? "hidden" : "animate-text"
               } text-gray-400 text-[14px] fixed `}
             >
               Blessing Daniels
