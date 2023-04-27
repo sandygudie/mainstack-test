@@ -84,7 +84,7 @@ export default function Home() {
                 key={`item-${index}`}
                 className="flex items-center gap-2 my-5 text-sm"
               >
-                <p>
+                <p className="flex items-center">
                   {" "}
                   {entry.payload.country === "Nigeria" ? (
                     <span class="fi fi-ng rounded mr-1"></span>
@@ -116,7 +116,7 @@ export default function Home() {
                 key={`item-${index}`}
                 className="flex items-center gap-2 my-5 text-sm"
               >
-                <p>
+              <p className="flex items-center">
                   {" "}
                   {entry.payload.source === "google" ? (
                     <GoogleIcon className="rounded mr-1 inline" />
