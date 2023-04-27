@@ -117,7 +117,7 @@ export default function Home() {
                 key={`item-${index}`}
                 className="flex items-center gap-2 my-5 text-sm"
               >
-              <p className="flex items-center">
+                <p className="flex items-center">
                   {" "}
                   {entry.payload.source === "google" ? (
                     <GoogleIcon className="rounded mr-1 inline" />
@@ -169,7 +169,9 @@ export default function Home() {
             Check out your dashboard summary.
           </p>
         </div>
-       <Link href="/" className="text-primary text-sm cursor-pointer">View analytics</Link>
+        <Link href="/" className="text-primary text-sm cursor-pointer">
+          View analytics
+        </Link>
       </div>
 
       <section>
@@ -200,8 +202,7 @@ export default function Home() {
           <div className="">
             <ResponsiveContainer width={"100%"} height={300} min-width={300}>
               <AreaChart
-                // width={1000}
-                // height={280}
+                key={Math.random()}
                 data={graphData}
                 margin={{
                   top: 10,
@@ -250,6 +251,9 @@ export default function Home() {
                   fillOpacity={1}
                   fill="url(#colorUv)"
                   baseLine={[{ x: 12, y: 15 }]}
+                  isAnimationActive={true}
+                  animationBegin={0}
+                  animationDuration={1500}
                 />
               </AreaChart>
             </ResponsiveContainer>
@@ -257,7 +261,7 @@ export default function Home() {
         </div>
       </section>
       <div className="my-6 md:flex-col lg:flex-row flex items-center gap-8 lg:gap-1 flex-wrap justify-between">
-        <div className="w-full lg:w-[48%] p-6 border-[1px] rounded-xl border-gray">
+        <div className="w-full lg:w-[49%] p-6 border-[1px] rounded-xl border-gray">
           <div className="mb-6 flex items-center justify-between">
             <p className="text-black font-semibold text-lg">Top Locations</p>
             <Link href="/" className="text-sm text-primary cursor-pointer">
@@ -274,7 +278,6 @@ export default function Home() {
               alignItems: "center",
               justifyContent: "space-around",
               margin: "auto",
-
             }}
             className="w-auto"
           >
@@ -305,7 +308,7 @@ export default function Home() {
             </Pie>
           </PieChart>
         </div>
-        <div className="w-full lg:w-[48%] p-6 border-[1px] rounded-xl border-gray">
+        <div className="w-full lg:w-[49%] p-6 border-[1px] rounded-xl border-gray">
           <div className="mb-6 flex items-center justify-between">
             <p className="text-black font-semibold text-lg">
               Top Referral source
