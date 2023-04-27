@@ -59,16 +59,16 @@ export default function Home() {
   const CustomTooltip = ({ payload, active }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="shadow-xl bg-white rounded-xl w-28 fixed text-center z-10 p-3 text-sm">
-          <div className="pb-2 flex items-center justify-between">
+        <div className="shadow-xl bg-primary-light text-primary font-normal rounded-xl w-28 fixed text-center z-10 p-3 text-sm">
+          <div className="pb-2 flex bg-primary-light text-primary font-normal items-center justify-between">
             {" "}
-            <p>Date:</p>
-            <p> {payload[0].payload.date}</p>
+            <p className="bg-primary-light">Date:</p>
+            <p className="bg-primary-light"> {payload[0].payload.date}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="bg-primary-light flex items-center justify-between">
             {" "}
-            <p>Views:</p>
-            <p> {payload[0].payload.views}</p>
+            <p className="bg-primary-light" >Views:</p>
+            <p className="bg-primary-light"> {payload[0].payload.views}</p>
           </div>
         </div>
       );
@@ -241,8 +241,9 @@ export default function Home() {
                 />
                 <Tooltip
                   content={<CustomTooltip />}
-                  wrapperStyle={{ border: "1px solid red" }}
-                  cursor={{ stroke: "red", strokeWidth: 2 }}
+                  wrapperStyle={{ border: "1px solid transparent" , backgroundColor: "#FF5403",}}
+                  cursor={{ stroke: "#FF5403", strokeWidth: 1 }}
+
                 />
                 <Area
                   type="monotone"
