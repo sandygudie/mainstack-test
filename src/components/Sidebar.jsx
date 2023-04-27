@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { BsArrowLeftSquare, BsArrowRightSquare } from "react-icons/bs";
 
-import { Tooltip } from 'react-tooltip'
+import { Tooltip } from "react-tooltip";
 
 export default function Sidebar({ isCollapisible, setCollapisible }) {
   const router = useRouter();
@@ -68,7 +68,8 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
                       <Link
                         href={link}
                         key={id}
-                        data-tooltip-id="my-tooltip" data-tooltip-content={title}
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content={title}
                         className={`my-1.5 border-2 font-medium text-[14px] pl-8 border-white ${
                           currentRoute === link &&
                           "text-primary border-l-primary border-l-2"
@@ -82,7 +83,17 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
                         >
                           {title}
                         </p>
-                       {isCollapisible && <Tooltip id="my-tooltip" place="right" />}
+                        {isCollapisible && (
+                          <Tooltip
+                            id="my-tooltip"
+                            place="right"
+                            style={{
+                              backgroundColor: "hsla(19, 100%, 95%, 1)",
+                              color: "hsla(19, 100%, 51%, 1)",
+                              width:"max-content"
+                            }}
+                          />
+                        )}
                       </Link>
                     );
                   })}
@@ -110,7 +121,11 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
               Blessing Daniels
             </span>
           </div>
-          <DotIcon className={`${isCollapisible ? "hidden" : "inline"} cursor-pointer hover:text-primary`} />
+          <DotIcon
+            className={`${
+              isCollapisible ? "hidden" : "inline"
+            } cursor-pointer hover:text-primary`}
+          />
         </div>
       </div>
     </div>
