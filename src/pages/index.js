@@ -59,16 +59,16 @@ export default function Home() {
   const CustomTooltip = ({ payload, active }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="shadow-xl bg-primary-light text-primary font-normal rounded-xl w-28 fixed text-center z-10 p-3 text-sm">
-          <div className="pb-2 flex bg-primary-light text-primary font-normal items-center justify-between">
+        <div className="shadow-xl bg-primary-light/80 rounded-xl w-28 fixed text-center z-10 p-3 text-sm">
+          <div className="pb-2 flex bg-primary-light/80 text-primary/80 font-medium items-center justify-between">
             {" "}
-            <p className="bg-primary-light">Date:</p>
-            <p className="bg-primary-light"> {payload[0].payload.date}</p>
+            <p className="bg-primary-light/80 ">Date:</p>
+            <p className="bg-primary-light/80 "> {payload[0].payload.date}</p>
           </div>
-          <div className="bg-primary-light flex items-center justify-between">
+          <div className="bg-primary-light/80 text-primary/80  font-medium flex items-center justify-between">
             {" "}
-            <p className="bg-primary-light" >Views:</p>
-            <p className="bg-primary-light"> {payload[0].payload.views}</p>
+            <p className="bg-primary-light/80 " >Views:</p>
+            <p className="bg-primary-light/80 "> {payload[0].payload.views}</p>
           </div>
         </div>
       );

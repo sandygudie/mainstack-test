@@ -88,9 +88,10 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
                             id="my-tooltip"
                             place="right"
                             style={{
-                              backgroundColor: "hsla(19, 100%, 95%, 1)",
-                              color: "hsla(19, 100%, 51%, 1)",
-                              width:"max-content"
+                              backgroundColor: "hsla(19, 100%, 95%, 0.8)",
+                              color: "hsla(19, 100%, 51%, 0.8)",
+                              width:"max-content",
+                              fontWeight:"normal"
                             }}
                           />
                         )}
