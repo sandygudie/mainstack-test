@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import Layout from "@/components/Layout";
-import React, { useState, useRef, Fragment } from "react";
+import React, { useState } from "react";
 
 export default function App({ Component, pageProps }) {
   const [isCollapisible, setCollapisible] = useState(false);

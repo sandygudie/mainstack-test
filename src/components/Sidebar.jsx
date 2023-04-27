@@ -9,7 +9,7 @@ import { BsBoxArrowLeft, BsBoxArrowRight,BsArrowLeftSquare,BsArrowRightSquare } 
 export default function Sidebar({ isCollapisible, setCollapisible }) {
   const router = useRouter();
   const currentRoute = router.pathname;
-console.log(currentRoute)
+
   return (
     <div
       className={`${
@@ -49,7 +49,7 @@ console.log(currentRoute)
         <div className="fixed top-20">
           {navigationItem.map(({ id, subitem, description }) => {
             return (
-              <div className="flex text-gray-400 flex-col gap-2 mb-4" key={id}>
+              <div className="flex text-gray-400 flex-col mb-4" key={id}>
                 <p
                   className={`${
                     isCollapisible ? "hidden" : "block"
