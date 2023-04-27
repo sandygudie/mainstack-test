@@ -20,6 +20,7 @@ import InstagramIcon from "../../public/images/instagram.svg";
 import GoogleIcon from "../../public/images/google.svg";
 import LinkledIcon from "../../public/images/linkledIn.svg";
 import TipIcon from "../../public/images/info.svg";
+import Link from "next/link";
 
 export default function Home() {
   const [graphData, setGraphData] = useState([]);
@@ -168,7 +169,7 @@ export default function Home() {
             Check out your dashboard summary.
           </p>
         </div>
-        <p className="text-primary text-sm cursor-pointer">View analytics</p>
+       <Link href="/" className="text-primary text-sm cursor-pointer">View analytics</Link>
       </div>
 
       <section>
@@ -257,11 +258,11 @@ export default function Home() {
       </section>
       <div className="my-6 md:flex-col lg:flex-row flex items-center gap-1 flex-wrap justify-between">
         <div className="w-full lg:w-[48%] p-6 border-[1px] rounded-xl border-gray">
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-6 flex items-center justify-between">
             <p className="text-black font-semibold text-lg">Top Locations</p>
-            <p className="text-sm text-primary cursor-pointer">
+            <Link href="/" className="text-sm text-primary cursor-pointer">
               View full reports
-            </p>
+            </Link>
           </div>
 
           <PieChart
@@ -289,7 +290,7 @@ export default function Home() {
               data={topLocation}
               cx={100}
               cy={90}
-              innerRadius={50}
+              innerRadius={45}
               outerRadius={85}
               fill="#8884d8"
               dataKey="percent"
@@ -305,13 +306,13 @@ export default function Home() {
           </PieChart>
         </div>
         <div className="w-full lg:w-[48%] p-6 border-[1px] rounded-xl border-gray">
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-6 flex items-center justify-between">
             <p className="text-black font-semibold text-lg">
               Top Referral source
             </p>
-            <p className="text-sm text-primary cursor-pointer">
+            <Link href="/" className="text-sm text-primary cursor-pointer">
               View full reports
-            </p>
+            </Link>
           </div>
 
           <PieChart
@@ -336,7 +337,7 @@ export default function Home() {
               data={topSource}
               cx={120}
               cy={90}
-              innerRadius={50}
+              innerRadius={45}
               outerRadius={85}
               fill="#8884d8"
               dataKey="percent"
