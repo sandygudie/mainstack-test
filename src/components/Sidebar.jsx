@@ -4,7 +4,12 @@ import Image from "next/image";
 import DotIcon from "../../public/images/doticon.svg";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { BsBoxArrowLeft, BsBoxArrowRight,BsArrowLeftSquare,BsArrowRightSquare } from "react-icons/bs";
+import {
+  BsBoxArrowLeft,
+  BsBoxArrowRight,
+  BsArrowLeftSquare,
+  BsArrowRightSquare,
+} from "react-icons/bs";
 
 export default function Sidebar({ isCollapisible, setCollapisible }) {
   const router = useRouter();
@@ -13,12 +18,12 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
   return (
     <div
       className={`${
-        isCollapisible ? "animate-box" : "animate-box-collapse w-[230px] md:w-[250px]"
+        isCollapisible
+          ? "animate-box"
+          : "animate-box-collapse w-[230px] md:w-[250px]"
       } transition ease-in-out duration-250 fixed left-0 
     z-30 pt-4 pb-8 flex flex-col justify-between h-screen pl-2 pr-4 border-gray border-r-[1px]`}
-   
-   >
-   
+    >
       <div className="relative">
         {!isCollapisible ? (
           <div className="absolute w-full top-4 flex items-center justify-between">
@@ -85,27 +90,27 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
           })}
         </div>
       </div>
-      <div className="pl-8 flex items-center justify-between">
-        <div className="">
-          <Image
-            width={30}
-            height={30}
-            src="/images/userimage.png"
-            alt="user"
-            className="inline mr-3"
-          />
-          <span
-            className={`${
-              isCollapisible ? "hidden" : "inline"
-            } text-gray-400 text-[14px]`}
-          >
-            Blessing Daniels
-          </span>
+      <div className="pl-8 ">
+        <div className="flex   items-center justify-between">
+          <div className="">
+            <Image
+              width={30}
+              height={30}
+              src="/images/userimage.png"
+              alt="user"
+              className="inline mr-3"
+            />
+            <span
+              className={`${
+                isCollapisible ? "hidden" : " animate-text"
+              } text-gray-400 text-[14px] fixed `}
+            >
+              Blessing Daniels
+            </span>
+          </div>
+          <DotIcon className={`${isCollapisible ? "hidden" : "inline"}`} />
         </div>
-        <DotIcon className={`${isCollapisible ? "hidden" : "inline"}`} />
       </div>
-      </div>
-    
+    </div>
   );
 }
-
