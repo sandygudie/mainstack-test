@@ -256,7 +256,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="my-6 md:flex-col lg:flex-row flex items-center gap-1 flex-wrap justify-between">
+      <div className="my-6 md:flex-col lg:flex-row flex items-center gap-8 lg:gap-1 flex-wrap justify-between">
         <div className="w-full lg:w-[48%] p-6 border-[1px] rounded-xl border-gray">
           <div className="mb-6 flex items-center justify-between">
             <p className="text-black font-semibold text-lg">Top Locations</p>

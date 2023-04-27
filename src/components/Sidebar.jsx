@@ -13,7 +13,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
   return (
     <div
       className={`${
-        isCollapisible ? "animate-box" : "animate-box-collapse "
+        isCollapisible ? "animate-box" : "animate-box-collapse w-[230px] md:w-[250px]"
       } transition ease-in-out duration-250 fixed left-0 
     z-30 pt-4 pb-8 flex flex-col justify-between h-screen pl-2 pr-4 border-gray border-r-[1px]`}
    

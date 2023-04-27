@@ -98,17 +98,12 @@ select {
 }
 
 .animate-box-collapse {
-  width: 250px;
   transition: width 0.5s;
 }
 .animate-box-main {
-  /* width: 300px; */
-  padding-left: 9em;
   transition: padding 0.5s;
 }
 .animate-box-main-collapse {
-  /* width: 300px; */
-  /* padding-left: 18em; */
   transition: padding 0.5s;
 }
 
