@@ -4,12 +4,7 @@ import Image from "next/image";
 import DotIcon from "../../public/images/doticon.svg";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import {
-  BsBoxArrowLeft,
-  BsBoxArrowRight,
-  BsArrowLeftSquare,
-  BsArrowRightSquare,
-} from "react-icons/bs";
+import { BsArrowLeftSquare, BsArrowRightSquare } from "react-icons/bs";
 
 export default function Sidebar({ isCollapisible, setCollapisible }) {
   const router = useRouter();
@@ -42,7 +37,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
             />
           </div>
         ) : (
-          <div className="absolute top-4 pl-8">
+          <div className="absolute top-6 pl-8">
             {" "}
             <BsArrowRightSquare
               className=" hover:text-primary cursor-pointer"
