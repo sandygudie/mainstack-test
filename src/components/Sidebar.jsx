@@ -63,7 +63,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
                       <Link
                         href={link}
                         key={id}
-                        className={`mb-2 border-2 font-medium text-[14px] pl-8 border-white ${
+                        className={`my-1.5 border-2 font-medium text-[14px] pl-8 border-white ${
                           currentRoute === link &&
                           "text-primary border-l-primary border-l-2"
                         } hover:text-primary hover:border-l-primary hover:border-l-2`}
