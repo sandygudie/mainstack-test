@@ -85,7 +85,7 @@ console.log(currentRoute)
           })}
         </div>
       </div>
-      <div className="pl-10 flex items-center justify-between">
+      <div className="pl-8 flex items-center justify-between">
         <div className="">
           <Image
             width={30}
@@ -97,7 +97,7 @@ console.log(currentRoute)
           <span
             className={`${
               isCollapisible ? "hidden" : "inline"
-            } text-gray-400 text-[15px]`}
+            } text-gray-400 text-[14px]`}
           >
             Blessing Daniels
           </span>

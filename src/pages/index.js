@@ -82,7 +82,7 @@ export default function Home() {
           ? payload.map((entry, index) => (
               <li
                 key={`item-${index}`}
-                className="flex items-center gap-3 my-5 text-sm"
+                className="flex items-center gap-2 my-5 text-sm"
               >
                 <p>
                   {" "}
@@ -100,7 +100,7 @@ export default function Home() {
                     ""
                   )}
                   <span className="text-black"> {entry.payload.country}</span>
-                  <span className="font-semibold pl-2">
+                  <span className="font-semibold pl-1">
                     {entry.payload.percent}%
                   </span>{" "}
                 </p>
@@ -114,7 +114,7 @@ export default function Home() {
           : payload.map((entry, index) => (
               <li
                 key={`item-${index}`}
-                className="flex items-center gap-3 my-5 text-sm"
+                className="flex items-center gap-2 my-5 text-sm"
               >
                 <p>
                   {" "}
@@ -130,7 +130,7 @@ export default function Home() {
                     ""
                   )}
                   <span className="text-black"> {entry.payload.source}</span>
-                  <span className="font-semibold pl-2">
+                  <span className="font-semibold pl-1">
                     {entry.payload.percent}%
                   </span>{" "}
                 </p>
@@ -273,7 +273,9 @@ export default function Home() {
               alignItems: "center",
               justifyContent: "space-around",
               margin: "auto",
+
             }}
+            className="w-auto"
           >
             <Legend
               content={<CustomizedLegend name="topLocation" />}
@@ -286,7 +288,7 @@ export default function Home() {
               legendType="line"
               data={topLocation}
               cx={100}
-              cy={100}
+              cy={90}
               innerRadius={50}
               outerRadius={85}
               fill="#8884d8"
@@ -333,7 +335,7 @@ export default function Home() {
               legendType="line"
               data={topSource}
               cx={120}
-              cy={100}
+              cy={90}
               innerRadius={50}
               outerRadius={85}
               fill="#8884d8"
