@@ -54,15 +54,15 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
         <div className="fixed top-20">
           {navigationItem.map(({ id, subitem, description }) => {
             return (
-              <div className="flex text-gray-400 flex-col mb-4" key={id}>
+              <div className=" relative flex text-gray-400 flex-col mb-10" key={id}>
                 <p
                   className={`${
-                    isCollapisible ? "hidden" : "block"
-                  } pl-10 text-[11px] font-light`}
+                    isCollapisible ? "hidden" : "animate-text"
+                  } pl-10 text-[11px] font-light absolute -top-[15em] my-36`}
                 >
                   {description}
                 </p>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1">
                   {subitem.map(({ id, title, Icon, link }) => {
                     return (
                       <Link
@@ -76,7 +76,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
                         <Icon className="inline w-5" />
                         <p
                           className={`${
-                            isCollapisible ? "hidden" : "block"
+                            isCollapisible ? "hidden" : "animate-text"
                           } inline ml-2`}
                         >
                           {title}

@@ -108,7 +108,7 @@ select {
 }
 
 .animate-text {
-  animation: fadeIn 0.5s;
+  animation: fadeIn 0.8s;
 }
 
 @keyframes fadeIn {
