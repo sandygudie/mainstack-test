@@ -106,7 +106,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
               Blessing Daniels
             </span>
           </div>
-          <DotIcon className={`${isCollapisible ? "hidden" : "inline"}`} />
+          <DotIcon className={`${isCollapisible ? "hidden" : "inline"} cursor-pointer hover:text-primary`} />
         </div>
       </div>
     </div>
