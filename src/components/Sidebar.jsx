@@ -101,7 +101,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
             <span
               className={`${
                 isCollapisible ? "hidden" : "animate-text"
-              } text-gray-400 text-[14px] fixed `}
+              } text-gray-400 text-[14px] fixed mt-1 `}
             >
               Blessing Daniels
             </span>
