@@ -21,6 +21,7 @@ import GoogleIcon from "../../public/images/google.svg";
 import LinkledIcon from "../../public/images/linkledIn.svg";
 import TipIcon from "../../public/images/info.svg";
 import Link from "next/link";
+import countries from "@/data/country";
 
 export default function Home() {
   const [graphData, setGraphData] = useState([]);
@@ -51,10 +52,7 @@ export default function Home() {
     "hsla(43, 96%, 51%, 1)",
     "hsla(158, 85%, 39%, 1)",
   ];
-  // const flag =[{
-  //   name:"Nigeria",
-  //   icon: <span class="fi fi-ng"></span>
-  // }]
+
 
   const CustomTooltip = ({ payload, active }) => {
     if (active && payload && payload.length) {
@@ -62,12 +60,12 @@ export default function Home() {
         <div className="shadow-xl bg-primary-light/80 rounded-xl w-28 fixed text-center z-10 p-3 text-sm">
           <div className="pb-2 flex bg-primary-light/80 text-primary/80 font-medium items-center justify-between">
             {" "}
-            <p className="bg-primary-light/80 ">Date:</p>
+            <p className="bg-primary-light/80 ">Date :</p>
             <p className="bg-primary-light/80 "> {payload[0].payload.date}</p>
           </div>
           <div className="bg-primary-light/80 text-primary/80  font-medium flex items-center justify-between">
             {" "}
-            <p className="bg-primary-light/80 " >Views:</p>
+            <p className="bg-primary-light/80 ">Views :</p>
             <p className="bg-primary-light/80 "> {payload[0].payload.views}</p>
           </div>
         </div>
@@ -87,18 +85,16 @@ export default function Home() {
               >
                 <p className="flex items-center">
                   {" "}
-                  {entry.payload.country === "Nigeria" ? (
-                    <span class="fi fi-ng rounded mr-1"></span>
-                  ) : entry.payload.country === "Germany" ? (
-                    <span class="fi fi-gr rounded mr-1"></span>
-                  ) : entry.payload.country === "Ghana" ? (
-                    <span class="fi fi-gh rounded mr-1"></span>
-                  ) : entry.payload.country === "Finland" ? (
-                    <span class="fi fi-fi rounded mr-1"></span>
-                  ) : entry.payload.country === "United Kingdom" ? (
-                    <span class="fi fi-gb rounded mr-1"></span>
-                  ) : (
-                    ""
+                 
+                  {countries.map((country) =>
+                    country.countryNameEn === entry.payload.country ? (
+                      <span
+                        key={country.countryNameEn}
+                        class={`fi fi-${country.countryCode.toLowerCase()} rounded mr-1`}
+                      ></span>
+                    ) : (
+                      ""
+                    )
                   )}
                   <span className="text-black"> {entry.payload.country}</span>
                   <span className="font-semibold pl-1">
@@ -241,9 +237,11 @@ export default function Home() {
                 />
                 <Tooltip
                   content={<CustomTooltip />}
-                  wrapperStyle={{ border: "1px solid transparent" , backgroundColor: "#FF5403",}}
+                  wrapperStyle={{
+                    border: "1px solid transparent",
+                    backgroundColor: "#FF5403",
+                  }}
                   cursor={{ stroke: "#FF5403", strokeWidth: 1 }}
-
                 />
                 <Area
                   type="monotone"
