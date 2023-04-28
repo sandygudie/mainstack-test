@@ -15,13 +15,10 @@ import { duration } from "@/data";
 import { useEffect, useState } from "react";
 import convertDate from "@/utils";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
-import FacebookIcon from "../../public/images/facebook.svg";
-import InstagramIcon from "../../public/images/instagram.svg";
-import GoogleIcon from "../../public/images/google.svg";
-import LinkledIcon from "../../public/images/linkledIn.svg";
 import TipIcon from "../../public/images/info.svg";
 import Link from "next/link";
-import countries from "@/data/country";
+import { countries } from "@/data/country";
+import { social } from "@/data/social";
 
 export default function Home() {
   const [graphData, setGraphData] = useState([]);
@@ -52,7 +49,6 @@ export default function Home() {
     "hsla(43, 96%, 51%, 1)",
     "hsla(158, 85%, 39%, 1)",
   ];
-
 
   const CustomTooltip = ({ payload, active }) => {
     if (active && payload && payload.length) {
@@ -85,12 +81,11 @@ export default function Home() {
               >
                 <p className="flex items-center">
                   {" "}
-                 
                   {countries.map((country) =>
                     country.countryNameEn === entry.payload.country ? (
                       <span
                         key={country.countryNameEn}
-                        class={`fi fi-${country.countryCode.toLowerCase()} rounded mr-1`}
+                        class={`fi fi-${country.countryCode.toLowerCase()} rounded mr-1.5`}
                       ></span>
                     ) : (
                       ""
@@ -115,18 +110,11 @@ export default function Home() {
               >
                 <p className="flex items-center">
                   {" "}
-                  {entry.payload.source === "google" ? (
-                    <GoogleIcon className="rounded mr-1 inline" />
-                  ) : entry.payload.source === "instagram" ? (
-                    <InstagramIcon className="rounded mr-1 w-5 inline" />
-                  ) : entry.payload.source === "facebook" ? (
-                    <FacebookIcon className="rounded mr-1  inline" />
-                  ) : entry.payload.source === "linkedin" ? (
-                    <LinkledIcon className="rounded mr-1 inline" />
-                  ) : (
-                    ""
+                  {social.map(({ name, Icon }) =>
+                    name === entry.payload.source ? <Icon key={name} className="rounded mr-1.5" /> : ""
                   )}
-                  <span className="text-black"> {entry.payload.source}</span>
+                  <span className="text-black"> {entry.payload.source.charAt(0).toUpperCase()
+  + entry.payload.source.slice(1)}</span>
                   <span className="font-semibold pl-1">
                     {entry.payload.percent}%
                   </span>{" "}

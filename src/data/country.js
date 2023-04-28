@@ -1,4 +1,4 @@
-const countries = [
+export const countries = [
     {
       countryNameEn: 'Andorra',
       countryNameLocal: 'Andorra',
@@ -3076,5 +3076,5 @@ const countries = [
     },
   ]
   
-  export default countries
+
   
