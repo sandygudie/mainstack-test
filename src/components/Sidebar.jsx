@@ -19,7 +19,7 @@ export default function Sidebar({ isCollapisible, setCollapisible }) {
           ? "animate-box"
           : "animate-box-collapse w-[230px] md:w-[250px]"
       } transition ease-in-out duration-250 fixed left-0 
-    z-30 pt-4 pb-12 flex flex-col justify-between h-screen pl-1 outline-none pr-4 border-gray border-r-[1px]`}
+    z-30 pt-4 pb-12 flex flex-col gap-[40rem] lg:gap-0 lg:justify-between  pl-1 h-full outline-none pr-4 border-gray border-r-[1px]`}
     >
       <div className="relative">
         {!isCollapisible ? (

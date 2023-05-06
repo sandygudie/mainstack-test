@@ -142,7 +142,7 @@ export default function Home() {
   };
 
   return (
-    <section className="pt-4 pb-8">
+    <section className="w-[96rem] md:w-auto px-20 md:px-0 overflow-x-auto pt-4 pb-8">
       <h1 className="text-black text-lg font-semibold"> Dashboard</h1>
       <div className="mt-8 mb-6 flex items-center justify-between">
         <div>
@@ -158,7 +158,7 @@ export default function Home() {
         </Link>
       </div>
 
-      <section>
+      <div>
         <div className="flex flex-wrap items-center gap-4">
           {duration.map(({ id, title }) => (
             <p
@@ -246,7 +246,7 @@ export default function Home() {
             </ResponsiveContainer>
           </div>
         </div>
-      </section>
+      </div>
       <div className="my-6 md:flex-col lg:flex-row flex items-center gap-8 lg:gap-1 flex-wrap justify-between">
         <div className="w-full lg:w-[49%] p-6 border-[1px] rounded-xl border-gray">
           <div className="mb-6 flex items-center justify-between">
