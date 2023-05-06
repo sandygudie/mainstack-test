@@ -142,7 +142,7 @@ export default function Home() {
   };
 
   return (
-    <section className="w-[96rem] md:w-auto pr-8 md:pr-0 overflow-x-auto pt-4 pb-8">
+    <section className="w-[64rem] md:w-auto pr-8 md:pr-0 overflow-x-auto pt-4 pb-8">
       <h1 className="text-black text-lg font-semibold"> Dashboard</h1>
       <div className="mt-8 mb-6 flex items-center justify-between">
         <div>
